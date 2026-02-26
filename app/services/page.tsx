@@ -9,27 +9,13 @@ import ServicesCTA from '@/components/services/ServicesCTA';
 
 export const metadata: Metadata = {
   title: 'Engineering Services — Full-Stack, Cloud, DevOps & Technical Leadership',
-  description: 'Expert software engineering services for funded startups. Full-stack development with React/Next.js, cloud architecture on AWS/GCP, DevOps & SRE, and fractional CTO services. Modern tech stack, battle-tested practices, 2-week sprints.',
+  description: 'Full-stack development, cloud architecture, and DevOps for startups. Modern stack, 2-week sprints.',
   keywords: [
     'full-stack development',
-    'React development',
-    'Next.js development',
-    'TypeScript development',
     'cloud architecture',
-    'AWS architecture',
-    'GCP cloud services',
-    'Kubernetes consulting',
-    'DevOps services',
-    'SRE services',
-    'site reliability engineering',
+    'DevOps',
     'fractional CTO',
-    'technical consulting',
-    'startup engineering',
-    'software engineering services',
-    'CI/CD pipeline',
-    'infrastructure as code',
-    'Terraform consulting',
-    'Docker consulting'
+    'startup engineering'
   ],
   openGraph: {
     title: 'Engineering Services — We Build. You Scale.',

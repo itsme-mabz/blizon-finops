@@ -12,18 +12,13 @@ import ServicesPopup from '@/components/ServicesPopup';
 
 export const metadata: Metadata = {
   title: "Cloud Cost Optimization & FinOps for Funded Startups",
-  description: "Blizon cuts AWS, GCP, and DigitalOcean costs by 20–40% in 30 days for Series A and B startups. Free cloud audit. Expert FinOps engineering without touching your roadmap. FinOps certified team with 15+ years experience.",
+  description: "Cut AWS and GCP costs 20-40% in 30 days. Free audit for Series A/B startups. Expert FinOps engineering.",
   keywords: [
-    "AWS cost optimization",
-    "GCP cost reduction",
-    "DigitalOcean cost savings",
-    "cloud cost audit",
-    "FinOps services",
-    "cloud spend optimization",
-    "infrastructure cost reduction",
-    "startup cloud costs",
-    "Series A cloud optimization",
-    "Series B cost engineering"
+    "cloud cost optimization",
+    "FinOps",
+    "AWS cost reduction",
+    "GCP optimization",
+    "startup engineering"
   ],
   openGraph: {
     title: "Stop Burning Cloud Budget — Cut Costs 20-40% in 30 Days",
@@ -56,50 +51,26 @@ export default function Home() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What does Blizon company do?",
+        "name": "What does Blizon do?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Blizon is a FinOps engineering and cloud cost optimization company that helps Series A and B funded startups reduce their AWS, GCP, and DigitalOcean cloud costs by 20-40% in 30 days. We also provide full-stack development, cloud architecture, DevOps, and technical consulting services."
+          "text": "We reduce AWS and GCP costs by 20-40% in 30 days for funded startups through FinOps engineering."
         }
       },
       {
         "@type": "Question",
-        "name": "How much can Blizon reduce my cloud costs?",
+        "name": "How much can you reduce my cloud costs?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Blizon typically reduces AWS, GCP, and DigitalOcean costs by 20-40% within the first 30 days for Series A and B funded startups. Most clients save more in month one than our entire fee. Average monthly savings range from $5,000 to $50,000 depending on your infrastructure size."
+          "text": "Typically 20-40% within 30 days. Most clients save more in month one than our entire fee."
         }
       },
       {
         "@type": "Question",
-        "name": "What cloud providers does Blizon support?",
+        "name": "Do you offer a free audit?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Blizon provides FinOps and cost optimization services for AWS (Amazon Web Services), GCP (Google Cloud Platform), and DigitalOcean. We also support multi-cloud environments and hybrid cloud architectures."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does the cloud cost optimization process take?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Blizon works in 30-day sprints. Initial cost reductions are typically achieved within the first 30 days, with ongoing optimization and monitoring continuing as needed. The discovery phase takes 1 week, followed by immediate implementation."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Blizon offer a free cloud audit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, Blizon offers a free cloud cost audit for Series A and B funded startups. The audit takes 60 minutes with no commitment or credit card required. You'll receive a detailed report with specific cost-saving opportunities."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who founded Blizon?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Blizon was founded in 2025 by experienced cloud engineers and FinOps practitioners with 15+ years combined experience in cloud infrastructure, cost optimization, and software engineering."
+          "text": "Yes, free 60-minute audit with no commitment or credit card required."
         }
       },
       {
@@ -107,31 +78,7 @@ export default function Home() {
         "name": "What is FinOps?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FinOps (Financial Operations) is a practice that brings financial accountability to cloud spending. It combines financial management, cloud engineering, and business operations to optimize cloud costs while maintaining performance and scalability."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Blizon work with startups only?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Blizon specializes in Series A and B funded startups but also works with seed-stage companies and growth-stage businesses. Our services are optimized for companies spending $10,000+ monthly on cloud infrastructure."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What engineering services does Blizon provide?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Beyond FinOps, Blizon provides full-stack development (React, Next.js, TypeScript, Node.js), cloud architecture (AWS, GCP, Kubernetes), DevOps & SRE services, and fractional CTO/technical leadership consulting."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does Blizon pricing work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most Blizon clients save more in the first month than our entire fee. We offer transparent pricing based on your infrastructure size and complexity. Contact us for a free audit and custom quote. No long-term contracts required."
+          "text": "Financial Operations - bringing financial accountability to cloud spending through engineering and optimization."
         }
       }
     ]

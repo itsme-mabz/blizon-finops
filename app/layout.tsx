@@ -15,26 +15,17 @@ export const metadata: Metadata = {
     default: "Blizon — Cloud Cost Optimization & FinOps for Funded Startups",
     template: "%s | Blizon"
   },
-  description: "Blizon cuts AWS, GCP, and DigitalOcean cloud costs by 20–40% in 30 days for Series A and B startups. Expert FinOps engineering, cloud optimization, and full-stack development services. Free cloud audit, no commitment required.",
+  description: "Cut AWS and GCP costs by 20-40% in 30 days. Expert FinOps engineering for Series A/B startups. Free audit, no commitment.",
   keywords: [
     "FinOps",
-    "Cloud Cost Optimization",
-    "AWS Cost Reduction",
-    "GCP Cost Optimization",
-    "DigitalOcean Cost Savings",
-    "Cloud Engineering",
-    "FinOps Consulting",
-    "Cloud Infrastructure",
-    "DevOps Services",
-    "Full-Stack Development",
-    "Series A Startups",
-    "Series B Startups",
-    "Cloud Architecture",
-    "Cost Engineering",
-    "Cloud Audit",
-    "Infrastructure Optimization",
-    "Kubernetes Optimization",
-    "Serverless Cost Reduction"
+    "cloud cost optimization",
+    "AWS cost reduction",
+    "GCP optimization",
+    "cloud engineering",
+    "DevOps",
+    "cloud architecture",
+    "Series A startups",
+    "infrastructure optimization"
   ],
   authors: [{ name: "Blizon", url: "https://blizon.tech" }],
   creator: "Blizon",
@@ -124,7 +115,7 @@ export default function RootLayout({
       "height": "512"
     },
     "image": "https://blizon.tech/og-image.png",
-    "description": "Blizon is a FinOps engineering and cloud cost optimization company specializing in reducing AWS, GCP, and DigitalOcean costs by 20-40% for Series A and B funded startups. Expert team with 15+ years combined experience in cloud infrastructure, full-stack development, and DevOps.",
+    "description": "FinOps engineering company specializing in cloud cost optimization for funded startups.",
     "slogan": "FinOps Engineering for Funded Startups",
     "foundingDate": "2025",
     "foundingLocation": {
@@ -171,106 +162,23 @@ export default function RootLayout({
       "https://twitter.com/blizon",
       "https://github.com/blizon"
     ],
-    "knowsAbout": [
-      "FinOps",
-      "Cloud Cost Optimization",
-      "AWS Cost Reduction",
-      "GCP Optimization",
-      "Cloud Engineering",
-      "DevOps",
-      "Site Reliability Engineering",
-      "Full-Stack Development",
-      "Cloud Architecture",
-      "Kubernetes",
-      "Infrastructure as Code",
-      "CI/CD",
-      "Cost Engineering"
-    ],
-    "makesOffer": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
+    "knowsAbout": ["FinOps", "Cloud Cost Optimization", "DevOps"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        {
           "@type": "Service",
-          "serviceType": "Cloud Cost Optimization",
-          "name": "Cloud Cost Optimization",
-          "description": "Reduce AWS, GCP, and DigitalOcean costs by 20-40% in 30 days without touching your roadmap",
-          "provider": {
-            "@type": "Organization",
-            "name": "Blizon"
-          },
-          "areaServed": "US",
-          "availableChannel": {
-            "@type": "ServiceChannel",
-            "serviceUrl": "https://blizon.tech"
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
+          "name": "FinOps & Cloud Optimization",
+          "description": "Reduce cloud costs by 20-40%"
+        },
+        {
           "@type": "Service",
-          "serviceType": "FinOps Engineering",
-          "name": "FinOps Consulting & Implementation",
-          "description": "Expert FinOps certified engineering team for cloud cost management",
-          "provider": {
-            "@type": "Organization",
-            "name": "Blizon"
-          }
+          "name": "Engineering Services",
+          "description": "Full-stack development and DevOps"
         }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "serviceType": "Software Development",
-          "name": "Full-Stack Development",
-          "description": "Modern web and mobile applications with React, Next.js, TypeScript, and Node.js",
-          "provider": {
-            "@type": "Organization",
-            "name": "Blizon"
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "serviceType": "Cloud Computing",
-          "name": "Cloud Architecture & Infrastructure",
-          "description": "AWS, GCP, and multi-cloud solutions with Kubernetes and serverless",
-          "provider": {
-            "@type": "Organization",
-            "name": "Blizon"
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "serviceType": "IT Services",
-          "name": "DevOps & SRE Services",
-          "description": "Reliability engineering, monitoring, automation, and performance optimization",
-          "provider": {
-            "@type": "Organization",
-            "name": "Blizon"
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "serviceType": "Consulting",
-          "name": "Technical Leadership & Fractional CTO",
-          "description": "Architecture reviews, technical strategy, and experienced engineering leadership",
-          "provider": {
-            "@type": "Organization",
-            "name": "Blizon"
-          }
-        }
-      }
-    ],
+      ]
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",

@@ -8,6 +8,7 @@ export default function Footer() {
   const footerLinks = [
     { label: 'FinOps Services', href: '#services' },
     { label: 'Engineering Services', href: '/services' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Process', href: '#process' },
     { label: 'Book Audit', href: '#audit' },
   ];

@@ -1,101 +1,178 @@
-import Image from "next/image";
+import type { Metadata } from 'next';
+import Nav from '@/components/Nav';
+import Hero from '@/components/Hero';
+import Problem from '@/components/Problem';
+import Stats from '@/components/Stats';
+import HowItWorks from '@/components/HowItWorks';
+import Services from '@/components/Services';
+import WhyBlizon from '@/components/WhyBlizon';
+import FinalCTA from '@/components/FinalCTA';
+import Footer from '@/components/Footer';
+import ServicesPopup from '@/components/ServicesPopup';
+
+export const metadata: Metadata = {
+  title: "Cloud Cost Optimization & FinOps for Funded Startups",
+  description: "Blizon cuts AWS, GCP, and DigitalOcean costs by 20–40% in 30 days for Series A and B startups. Free cloud audit. Expert FinOps engineering without touching your roadmap. FinOps certified team with 15+ years experience.",
+  keywords: [
+    "AWS cost optimization",
+    "GCP cost reduction",
+    "DigitalOcean cost savings",
+    "cloud cost audit",
+    "FinOps services",
+    "cloud spend optimization",
+    "infrastructure cost reduction",
+    "startup cloud costs",
+    "Series A cloud optimization",
+    "Series B cost engineering"
+  ],
+  openGraph: {
+    title: "Stop Burning Cloud Budget — Cut Costs 20-40% in 30 Days",
+    description: "Free cloud audit for Series A/B startups. Expert FinOps engineering that cuts AWS and GCP costs without touching your roadmap.",
+    url: "https://blizon.tech",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Blizon FinOps - Cut Cloud Costs by 20-40%"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stop Burning Cloud Budget — Cut Costs 20-40% in 30 Days",
+    description: "Free cloud audit for Series A/B startups. Expert FinOps engineering that cuts AWS and GCP costs.",
+  },
+  alternates: {
+    canonical: "https://blizon.tech",
+  },
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does Blizon company do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blizon is a FinOps engineering and cloud cost optimization company that helps Series A and B funded startups reduce their AWS, GCP, and DigitalOcean cloud costs by 20-40% in 30 days. We also provide full-stack development, cloud architecture, DevOps, and technical consulting services."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much can Blizon reduce my cloud costs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blizon typically reduces AWS, GCP, and DigitalOcean costs by 20-40% within the first 30 days for Series A and B funded startups. Most clients save more in month one than our entire fee. Average monthly savings range from $5,000 to $50,000 depending on your infrastructure size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What cloud providers does Blizon support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blizon provides FinOps and cost optimization services for AWS (Amazon Web Services), GCP (Google Cloud Platform), and DigitalOcean. We also support multi-cloud environments and hybrid cloud architectures."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the cloud cost optimization process take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blizon works in 30-day sprints. Initial cost reductions are typically achieved within the first 30 days, with ongoing optimization and monitoring continuing as needed. The discovery phase takes 1 week, followed by immediate implementation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Blizon offer a free cloud audit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Blizon offers a free cloud cost audit for Series A and B funded startups. The audit takes 60 minutes with no commitment or credit card required. You'll receive a detailed report with specific cost-saving opportunities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who founded Blizon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blizon was founded in 2025 by experienced cloud engineers and FinOps practitioners with 15+ years combined experience in cloud infrastructure, cost optimization, and software engineering."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is FinOps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FinOps (Financial Operations) is a practice that brings financial accountability to cloud spending. It combines financial management, cloud engineering, and business operations to optimize cloud costs while maintaining performance and scalability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Blizon work with startups only?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blizon specializes in Series A and B funded startups but also works with seed-stage companies and growth-stage businesses. Our services are optimized for companies spending $10,000+ monthly on cloud infrastructure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What engineering services does Blizon provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Beyond FinOps, Blizon provides full-stack development (React, Next.js, TypeScript, Node.js), cloud architecture (AWS, GCP, Kubernetes), DevOps & SRE services, and fractional CTO/technical leadership consulting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Blizon pricing work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most Blizon clients save more in the first month than our entire fee. We offer transparent pricing based on your infrastructure size and complexity. Contact us for a free audit and custom quote. No long-term contracts required."
+        }
+      }
+    ]
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://blizon.tech"
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Nav />
+      <main>
+        <Hero />
+        <Problem />
+        <Stats />
+        <HowItWorks />
+        <Services />
+        <WhyBlizon />
+
+        <FinalCTA />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Footer />
+      <ServicesPopup />
+    </>
   );
 }

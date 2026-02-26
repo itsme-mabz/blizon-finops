@@ -41,7 +41,8 @@ async function getPosts(): Promise<Post[]> {
   }
 }
 
-export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+export const revalidate = 0; // Disable ISR cache
 
 export default async function BlogPage() {
   const posts = await getPosts();

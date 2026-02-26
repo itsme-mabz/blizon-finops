@@ -35,17 +35,21 @@ async function getRelatedPosts(categorySlug: string, currentSlug: string): Promi
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const data = await hygraph.request<{ posts: { slug: string }[] }>(GET_ALL_POST_SLUGS);
-    return data.posts.map((post) => ({
-      slug: post.slug,
-    }));
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
-}
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+export const revalidate = 0; // Disable ISR cache
+
+// Temporarily disable static generation for development
+// export async function generateStaticParams() {
+//   try {
+//     const data = await hygraph.request<{ posts: { slug: string }[] }>(GET_ALL_POST_SLUGS);
+//     return data.posts.map((post) => ({
+//       slug: post.slug,
+//     }));
+//   } catch (error) {
+//     console.error('Error generating static params:', error);
+//     return [];
+//   }
+// }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(params.slug);
@@ -89,8 +93,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   };
 }
-
-export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function BlogPostPage({ params }: Props) {
   const post = await getPost(params.slug);

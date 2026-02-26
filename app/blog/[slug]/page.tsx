@@ -4,7 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BlogPost from '@/components/blog/BlogPost';
 import RelatedPosts from '@/components/blog/RelatedPosts';
-import { hygraph, GET_POST_BY_SLUG, GET_ALL_POST_SLUGS, GET_RELATED_POSTS, Post } from '@/lib/hygraph';
+import { hygraph, GET_POST_BY_SLUG, GET_RELATED_POSTS, Post } from '@/lib/hygraph';
 
 interface Props {
   params: {

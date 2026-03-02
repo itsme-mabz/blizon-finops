@@ -6,11 +6,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { label: 'FinOps Services', href: '#services' },
+    { label: 'FinOps Services', href: '/#services' },
     { label: 'Engineering Services', href: '/services' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Process', href: '#process' },
-    { label: 'Book Audit', href: '#audit' },
+    { label: 'Calculator', href: '/calculator' },
+    { label: 'Process', href: '/#process' },
+    { label: 'Book Audit', href: '/#audit' },
   ];
 
   return (

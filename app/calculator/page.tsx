@@ -137,7 +137,7 @@ export default function FinOpsCalculator() {
     ]);
 
     const toggleBtnClass = (val: string, current: string) =>
-        `py-3 px-6 rounded-lg font-medium transition-all duration-300 w-full ${val === current
+        `py-3 px-6 font-medium transition-all duration-300 w-full ${val === current
             ? 'bg-orange text-black shadow-lg shadow-orange/20'
             : 'bg-surface border border-border text-text-secondary hover:border-orange/50 hover:text-text-primary'
         }`;
@@ -655,7 +655,7 @@ export default function FinOpsCalculator() {
                                                     target="_blank"
                                                     className="w-full md:w-auto py-5 px-10 bg-orange text-black font-clash font-bold text-lg rounded-xl shadow-[0_15px_40px_rgba(255,107,53,0.3)] hover:shadow-[0_20px_50px_rgba(255,107,53,0.4)] transition-all duration-300 hover:text-black transform hover:-translate-y-1 block text-center"
                                                 >
-                                                    👉 Book Free Cloud Assessment
+                                                 Book Free Cloud Assessment
                                                 </a>
                                             </div>
                                         </div>
@@ -671,19 +671,15 @@ export default function FinOpsCalculator() {
                                 <button
                                     onClick={handleBack}
                                     disabled={step === 1}
-                                    className={`py-3 px-6 rounded-lg font-cabinet font-medium transition-all ${step === 1 ? 'opacity-0 pointer-events-none' : 'text-text-secondary hover:text-white hover:bg-surface'
+                                    className={`py-3 px-6 font-cabinet font-medium transition-all ${step === 1 ? 'opacity-0 pointer-events-none' : 'text-text-secondary hover:text-white hover:bg-surface'
                                         }`}
                                 >
                                     ← Back
-
-
                                 </button>
                                 <button
                                     onClick={handleNext}
-                                    className="py-3 px-8 bg-white text-black rounded-lg font-clash font-semibold hover:bg-orange transition-colors shadow-lg shadow-white/5"
+                                    className="py-3 px-8 bg-white text-black font-clash font-semibold hover:bg-orange transition-colors shadow-lg shadow-white/5"
                                 >
-
-                                    
                                     {step === 5 ? 'Calculate Waste ' : 'Next Step →'}
                                 </button>
                             </div>

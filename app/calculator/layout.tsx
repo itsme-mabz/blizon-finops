@@ -1,26 +1,27 @@
-import type { Metadata } from 'next';
+import { calculatorMetadata, calculatorSchema, webPageSchema, faqSchema } from './metadata';
 
-export const metadata: Metadata = {
-    title: "Cloud Savings Calculator | Blizon",
-    description: "Calculate how much your startup can save on AWS, GCP, or Azure costs with Blizon's expert FinOps engineering.",
-    openGraph: {
-        title: "Cloud Savings Calculator — Blizon",
-        description: "Estimate your monthly and annual cloud savings with our interactive FinOps calculator.",
-        images: [
-            {
-                url: "/og-image.png",
-                width: 1200,
-                height: 630,
-                alt: "Blizon Cloud Savings Calculator"
-            }
-        ]
-    }
-};
+export const metadata = calculatorMetadata;
 
 export default function CalculatorLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    return <>{children}</>;
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            {children}
+        </>
+    );
 }

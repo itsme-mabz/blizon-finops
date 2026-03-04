@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +30,6 @@ export default function Nav() {
     { label: 'Process', href: '/#process' },
     { label: 'Blog', href: '/blog' },
     { label: 'About', href: '/#about' },
-    { label: 'Calculator', href: '/calculator' },
-
   ];
 
   const handleLinkClick = () => {
@@ -54,7 +53,7 @@ export default function Nav() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-12">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -64,6 +63,32 @@ export default function Nav() {
                   {link.label}
                 </Link>
               ))}
+              <div 
+                className="relative"
+                onMouseEnter={() => setToolsOpen(true)}
+                onMouseLeave={() => setToolsOpen(false)}
+              >
+                <button className="text-text-secondary hover:text-text-primary transition-colors duration-200 text-[15px] cursor-hover">
+                  Tools
+                </button>
+                {toolsOpen && (
+                  <div className="absolute top-full left-0 pt-4">
+                    <div className="bg-black border border-border shadow-lg min-w-[160px]">
+                      <Link
+                        href="/calculator"
+                        className="block px-4 py-3 text-orange  hover:bg-surface transition-colors duration-200 text-[15px]"
+                      >
+                        Calculator
+                      </Link>
+                    </div>
+
+                    
+
+
+                  </div>
+                  
+                )}
+              </div>
               <Link
                 href="https://calendly.com/hello-blizon/30min"
                 target="_blank"
@@ -119,6 +144,19 @@ export default function Nav() {
             </Link>
           ))}
           <Link
+            href="/calculator"
+            onClick={handleLinkClick}
+            className={`font-clash font-semibold text-4xl text-text-primary hover:text-orange transition-all duration-300 cursor-hover ${mobileMenuOpen
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-4'
+              }`}
+            style={{
+              transitionDelay: mobileMenuOpen ? `${navLinks.length * 0.1}s` : '0s',
+            }}
+          >
+            Calculator
+          </Link>
+          <Link
             href="https://calendly.com/hello-blizon/30min"
             target="_blank"
             onClick={handleLinkClick}
@@ -127,7 +165,7 @@ export default function Nav() {
               : 'opacity-0 translate-y-4'
               }`}
             style={{
-              transitionDelay: mobileMenuOpen ? `${navLinks.length * 0.1}s` : '0s',
+              transitionDelay: mobileMenuOpen ? `${(navLinks.length + 1) * 0.1}s` : '0s',
             }}
           >
             Free Audit →

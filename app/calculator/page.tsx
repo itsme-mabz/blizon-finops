@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
 
 type YesNo = 'Yes' | 'No';
 
@@ -211,7 +211,7 @@ export default function FinOpsCalculator() {
             y += 15;
             doc.setFontSize(11);
             doc.setFont('helvetica', 'normal');
-            results.topAreas.forEach((area, index) => {
+            results.topAreas.forEach((area) => {
                 doc.setTextColor(primaryColor);
                 doc.text(`►`, 20, y);
                 doc.setTextColor(textColor);
@@ -332,7 +332,7 @@ export default function FinOpsCalculator() {
                                                 <label className="text-sm font-cabinet font-medium text-text-secondary uppercase tracking-widest">Cloud Provider</label>
                                                 <div className="grid grid-cols-3 gap-4">
                                                     {['AWS', 'Azure', 'GCP'].map(prov => (
-                                                        <button key={prov} onClick={() => setProvider(prov as any)} className={toggleBtnClass(prov, provider)}>{prov}</button>
+                                                        <button key={prov} onClick={() => setProvider(prov as 'AWS' | 'Azure' | 'GCP')} className={toggleBtnClass(prov, provider)}>{prov}</button>
                                                     ))}
                                                 </div>
                                             </div>

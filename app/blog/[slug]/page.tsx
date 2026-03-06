@@ -4,7 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BlogPost from '@/components/blog/BlogPost';
 import RelatedPosts from '@/components/blog/RelatedPosts';
-import { hygraph, GET_POST_BY_SLUG, GET_RELATED_POSTS, Post } from '@/lib/hygraph';
+import { getBlogPostBySlug, getBlogPosts } from '@/lib/blogs';
 
 interface Props {
   params: {
@@ -12,47 +12,11 @@ interface Props {
   };
 }
 
-async function getPost(slug: string): Promise<Post | null> {
-  try {
-    const data = await hygraph.request<{ post: Post }>(GET_POST_BY_SLUG, { slug });
-    return data.post;
-  } catch (error) {
-    console.error('Error fetching post:', error);
-    return null;
-  }
-}
-
-async function getRelatedPosts(categorySlug: string, currentSlug: string): Promise<Post[]> {
-  try {
-    const data = await hygraph.request<{ posts: Post[] }>(GET_RELATED_POSTS, {
-      categorySlug,
-      currentSlug,
-    });
-    return data.posts;
-  } catch (error) {
-    console.error('Error fetching related posts:', error);
-    return [];
-  }
-}
-
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
-export const revalidate = 0; // Disable ISR cache
-
-// Temporarily disable static generation for development
-// export async function generateStaticParams() {
-//   try {
-//     const data = await hygraph.request<{ posts: { slug: string }[] }>(GET_ALL_POST_SLUGS);
-//     return data.posts.map((post) => ({
-//       slug: post.slug,
-//     }));
-//   } catch (error) {
-//     console.error('Error generating static params:', error);
-//     return [];
-//   }
-// }
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  const post = await getBlogPostBySlug(params.slug);
 
   if (!post) {
     return {
@@ -63,30 +27,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
-    keywords: post.tags ? post.tags.split(',').map(t => t.trim()) : [],
-    authors: [{ name: post.author.name }],
+    keywords: post.tags ? post.tags.split('\n').map((t: string) => t.trim()) : [],
+    authors: [{ name: post.author }],
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: `https://blizon.tech/blog/${post.slug}`,
       type: 'article',
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
-      authors: [post.author.name],
-      images: [
-        {
-          url: post.coverImage.url,
-          width: post.coverImage.width,
-          height: post.coverImage.height,
-          alt: post.title,
-        },
-      ],
+      publishedTime: post.publishedDate,
+      authors: [post.author],
+      images: post.featuredImage?.url
+        ? [{ url: post.featuredImage.url, alt: post.title }]
+        : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.coverImage.url],
+      images: post.featuredImage?.url ? [post.featuredImage.url] : [],
     },
     alternates: {
       canonical: `https://blizon.tech/blog/${post.slug}`,
@@ -95,27 +53,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await getPost(params.slug);
+  const post = await getBlogPostBySlug(params.slug);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = await getRelatedPosts(post.category.slug, post.slug);
+  const allPosts = await getBlogPosts();
+  const relatedPosts = allPosts
+    .filter((p: any) => p.category === post.category && p.slug !== post.slug)
+    .slice(0, 3);
 
-  // Article structured data
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
-    "image": post.coverImage.url,
-    "datePublished": post.publishedAt,
-    "dateModified": post.updatedAt || post.publishedAt,
+    "image": post.featuredImage?.url ?? '',
+    "datePublished": post.publishedDate,
     "author": {
       "@type": "Person",
-      "name": post.author.name,
-      ...(post.author.picture && { "image": post.author.picture.url }),
+      "name": post.author,
     },
     "publisher": {
       "@type": "Organization",
@@ -129,7 +87,7 @@ export default async function BlogPostPage({ params }: Props) {
       "@type": "WebPage",
       "@id": `https://blizon.tech/blog/${post.slug}`
     },
-    "articleSection": post.category.name,
+    "articleSection": post.category,
     ...(post.tags && { "keywords": post.tags }),
   };
 

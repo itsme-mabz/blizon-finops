@@ -3,10 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
-import { Post } from '@/lib/hygraph';
 
 interface BlogCardProps {
-  post: Post;
+  post: any;
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -17,16 +16,18 @@ export default function BlogCard({ post }: BlogCardProps) {
     >
       {/* Cover Image */}
       <div className="relative h-56 bg-surface overflow-hidden">
-        <Image
-          src={post.coverImage.url}
-          alt={post.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {post.featuredImage?.url && (
+          <Image
+            src={post.featuredImage.url}
+            alt={post.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         {/* Category Badge */}
         <div className="absolute top-4 left-4 z-10">
           <span className="text-xs font-mono text-black bg-orange px-3 py-1 font-semibold uppercase tracking-wide">
-            {post.category.name}
+            {post.category}
           </span>
         </div>
       </div>
@@ -35,9 +36,11 @@ export default function BlogCard({ post }: BlogCardProps) {
       <div className="p-6">
         {/* Meta */}
         <div className="flex items-center gap-3 mb-4 text-xs text-text-muted font-cabinet">
-          <span>{format(new Date(post.publishedAt), 'MMM dd, yyyy')}</span>
+          <span>{format(new Date(post.publishedDate), 'MMM dd, yyyy')}</span>
           <span>•</span>
-          <span>{post.author.name}</span>
+          <span>{post.author}</span>
+          <span>•</span>
+          <span>{post.readTime} min read</span>
         </div>
 
         {/* Title */}
